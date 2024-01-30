@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -16,18 +18,135 @@
   }
 }
 
+
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: #eee;
+  font-family: 'Roboto', sans-serif;
+}
+
+.layout {
+  display: flex;
+  height: 100vh;
+  gap: 2rem;
+}
+
+.sidebar_wrapper {
+  position: relative;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 10px;
+}
+.navbarlink {
+  margin-right: 16px;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  align-items: center; /* Add this to center the content vertically */
+  gap: 16px;
+  border: 1px solid black; /* Use 'border' instead of 'border-color' to set border properties */
+  padding: 16px; /* Add padding for spacing around the dashboard */
+}
+
+.boxes {
+  color: black;
+  border: 1px solid black; /* Add border color for the boxes */
+  padding: 100px; /* Add padding for spacing inside the boxes */
+  text-align: center; /* Center text inside the boxes */
+  border-radius: 50px;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.sidebar {
+  width: 17rem;
+  height: 100%;
+  background-color: #fff;
+  padding: 1rem;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.257);
+}
+
+.sidebar_top {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.sidebar_logo {
+  width: 3.5rem;
+  height: 3.5rem;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.sidebar_list{
+  list-style: none;
+
+}
+
+.sidebar_link {
+  display: inline-block;
+  font-size: 1rem;
+  text-decoration: none;
+  color: black;
+  padding: 0.8rem 1rem;
+  display: flex;
+  background-color: #f3f4f6;
+  margin-bottom: 1rem;
+  border-radius: 0.8rem;
+}
+
+.sidebar_icon {
+  font-size: 1.2rem;
+  display: inline-block;
+}
+
+sidebar_name {
+  margin-left: 0.5rem;
+}
+
+.sidebar_logo-name {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.btn {
+  position: absolute;
+  right: 0;
+  top: 4.7rem;
+  border: none;
+  background-color: #fff;
+  width: 1.5rem;
+  height:1.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transform:  translateX(50%);
+  font-size: 1.1rem;
+}
+
+[data-collapse="true"]{
+  width: 5.3rem;
+}
+
+[data-collapse="true"] .side_name 
+[data-collapse="true"] .sidebar_logo-name{
+  display: none;
 }
