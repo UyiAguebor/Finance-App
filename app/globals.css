@@ -146,7 +146,7 @@ sidebar_name {
   width: 5.3rem;
 }
 
-[data-collapse="true"] .side_name 
+[data-collapse="true"] .sidebar_name, 
 [data-collapse="true"] .sidebar_logo-name{
   display: none;
 }

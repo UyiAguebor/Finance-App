@@ -1,36 +1,31 @@
-import React, { createContext, useState, ReactNode } from "react";
+"use client"
+import {createContext, useState, ReactNode} from "react"
 
-// Initial context value
 const initialValue = {
-    isCollapsedSidebar: false,
-    toggleSidebarCollapseHandler: () => {}
+    isCollapsedSidebar: false, 
+    toggleSidebarCollapseHandler: () => {},
 };
 
-// Create a context
 export const SidebarContext = createContext(initialValue);
 
-interface Props {
+interface Props{
     children: ReactNode | ReactNode[];
 }
 
-// SidebarProvider component
-const SidebarProvider = ({ children }: Props) => {
+const SidebarProvider = ({children}: Props)=>{
 
-    // State for controlling the sidebar collapse
-    const [isCollapsedSidebar, toggleSidebarCollapse] = useState<boolean>(false);
+    const [isCollapsedSidebar, setIsCollapsedSidebar] = useState<boolean>(false);
 
-    // Handler for toggling sidebar collapse
     const toggleSidebarCollapseHandler = () => {
-        toggleSidebarCollapse(prev => !prev);
-    }
+        setIsCollapsedSidebar((prev) => !prev);
+    };
 
-    return (
-        // Provide the context value to the children components
-        <SidebarContext.Provider
-            value={{ isCollapsedSidebar, toggleSidebarCollapseHandler }}
-        >
-            {children}
-        </SidebarContext.Provider>
+    return ( 
+    <SidebarContext.Provider 
+    value={{ isCollapsedSidebar, toggleSidebarCollapseHandler }}
+    >
+        {children}
+    </SidebarContext.Provider>
     );
 };
 
