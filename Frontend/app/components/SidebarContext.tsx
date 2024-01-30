@@ -14,7 +14,7 @@ interface Props{
 
 const SidebarProvider = ({children}: Props)=>{
 
-    const [isCollapsedSidebar, setIsCollapsedSidebar] = useState<boolean>(false);
+    const [isCollapsedSidebar, setIsCollapsedSidebar] = useState(false);
 
     const toggleSidebarCollapseHandler = () => {
         setIsCollapsedSidebar((prev) => !prev);
@@ -22,7 +22,7 @@ const SidebarProvider = ({children}: Props)=>{
 
     return ( 
     <SidebarContext.Provider 
-    value={{ isCollapsedSidebar, toggleSidebarCollapseHandler }}
+        value={{ isCollapsedSidebar, toggleSidebarCollapseHandler }}
     >
         {children}
     </SidebarContext.Provider>

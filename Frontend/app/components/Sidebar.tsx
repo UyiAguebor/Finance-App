@@ -1,13 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AiOutlineHome } from "react-icons/ai";
-import { BsPeople } from "react-icons/bs";
-import { FiMail } from "react-icons/fi";
-import { MdDashboard } from "react-icons/md";
 import { TiContacts } from "react-icons/ti";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { SidebarContext } from "./SidebarContext";
+import { MdOutlineSavings } from "react-icons/md";
+import { HiOutlineCollection } from "react-icons/hi";
 
 const sidebarItems = [
     {
@@ -18,12 +17,12 @@ const sidebarItems = [
     {
         name: "Savings",
         href: "/savings",
-        icon: BsPeople
+        icon: MdOutlineSavings
     },
     {
         name: "Portfolio",
         href: "/portfolio",
-        icon: FiMail
+        icon: HiOutlineCollection
     },
     {
         name: "Contact",
@@ -34,7 +33,8 @@ const sidebarItems = [
 
 const Sidebar = () => {
 
-    const {isCollapsedSidebar, toggleSidebarCollapseHandler} = useContext(SidebarContext);
+    const {isCollapsedSidebar, toggleSidebarCollapseHandler} =
+     useContext(SidebarContext);
 
     return ( 
     <div className="sidebar_wrapper">
@@ -42,7 +42,7 @@ const Sidebar = () => {
         <aside className="sidebar" data-collapse={isCollapsedSidebar}>
             <div className="sidebar_top">
                 <Image 
-                src="/vercel.svg" 
+                src="/money-bag.jpg" 
                 width={80} 
                 height={80}
                 className="sidebar_logo"
