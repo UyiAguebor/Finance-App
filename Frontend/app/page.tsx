@@ -1,11 +1,18 @@
 "use client"
 import BaseLayout from "./components/Baselayout";
-import SidebarProvider from "./components/SidebarContext";
+import Dashbox from "./components/Dashboard";
 
 export default function Home() {
   return (
       <BaseLayout>
-        <div>Home Page</div>
+      <div className="container">
+        <div className="dashboard">
+        <Dashbox link="/savings"/>
+        <Dashbox link="/savings"/>
+        <Dashbox link="/savings"/>
+        <Dashbox link="/savings"/>
+        </div>
+      </div>
       </BaseLayout>
   )
 }
