@@ -1,17 +1,16 @@
-import React from "react";
+import Link from "next/link";
+import React, { ReactNode } from "react";
 
-const Dashboard = () => {
+interface Props {
+  link: string;
+}
+
+const Dashbox: React.FC<Props> = ({link}) => {
   return (
-    <div className="dashboard">
-      {/* Add your boxes or other content for the dashboard here */}
+    <Link href={link}>
       <div className="boxes">Box 1</div>
-      <div className="boxes">Box 2</div>
-      <div className="boxes">Box 3</div>
-      <div className="boxes">Box 4</div>
-      <div className="boxes">Box 5</div>
-      <div className="boxes">Box 6</div>
-    </div>
+    </Link>
   );
 };
 
-export default Dashboard;
+export default Dashbox;
