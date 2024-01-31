@@ -5,6 +5,19 @@ import { useRouter } from "next/navigation";
 export default function LoginPage() {
   const router = useRouter();
 
+  const handlesubmit = async () => {
+    const query = fetch('http://localhost:8000', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: ,
+    })
+
+
+    router.push('/')
+  }
+
   return (
     <>
       <div className="flex justify-center mt-16">
@@ -78,10 +91,8 @@ focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 <div>
                   <button
                     type="submit"
-                    className="flex w-full justify-center rounded-md bg-indigo-600
- px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 
-focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 
-focus-visible:outline-indigo-600"
+                    className="button"
+                    onClick={() => router.push('/')}
                   >
                     Sign in
                   </button>
