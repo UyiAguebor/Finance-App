@@ -1,5 +1,5 @@
 "use client"
-import BaseLayout from "../components/Baselayout";
+import BaseLayout from "../Components/Baselayout";
 
 export default function SavingsPage() {
   return (

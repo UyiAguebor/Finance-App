@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
 import { AiOutlineHome } from "react-icons/ai";
@@ -11,7 +12,7 @@ import { HiOutlineCollection } from "react-icons/hi";
 const sidebarItems = [
     {
         name: "Home",
-        href: "/",
+        href: "/dashboard",
         icon: AiOutlineHome
     },
     {
