@@ -13,7 +13,6 @@ export default function Signup() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const router = useRouter();
 
-
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     
     try {

@@ -10,19 +10,29 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const router = useRouter();
 
-  const handleSubmit = async () => {
-    database.post('/login', {
-      emailAddress: email,
-      password: password
-    })
-    .then(function (response) {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const response = await database.post('/login', {
+        emailAddress: email,
+        password: password
+      });
+  
       console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-    router.push('/dashboard')
-  }
+  
+      // Assuming you want to redirect only if the response indicates success
+      if (response.status === 200) {
+        // Handle success, e.g., redirect or show a success message
+        console.log('User logged in successfully');
+      } else {
+        // Handle other status codes or error scenarios
+        console.error('Login failed:', response.statusText);
+      }
+    } catch (error) {
+      // Handle network errors or exceptions
+      console.error('Error logging in:', error);
+    }
+  };
 
   return (
     <>
@@ -41,7 +51,7 @@ tracking-tight text-gray-900">
             </div>
 
             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-              <form className="space-y-6" action="#" method="POST">
+              <form className="space-y-6" action="#" method="POST" onSubmit={handleSubmit}>
                 <div>
                   <label
                     htmlFor="email"
@@ -102,7 +112,6 @@ focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   <button
                     type="submit"
                     className="button"
-                    onClick={handleSubmit}
                   >
                     Sign in
                   </button>
