@@ -2,7 +2,6 @@ import Link from "next/link";
 import React from "react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import Progress from "./Progress";
-import "react-circular-progressbar/dist/styles.css";
 
 interface Props {
   link: string;

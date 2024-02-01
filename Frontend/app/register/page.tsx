@@ -14,44 +14,30 @@ export default function Signup() {
   const router = useRouter();
 
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     const url = 'http://localhost:8000/users/register';
-    axios.post('http://localhost:8000/users/register',{
-      data: {
-        firstName: firstName,
-        lastName: lastName,
-        emailAddress: email,
-        password: password
-      }
-    })
-    
     try {
-      const response = await fetch(url, {
-        method: 'post',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          firstName: firstName,
-          lastName: lastName,
-          emailAddress: email,
-          password: password,
-        }),
+      const response = await axios.post(url, {
+        firstName,
+        lastName,
+        emailAddress: email,
+        password,
       });
   
-      if (!response.ok) {
+      // Assuming your server returns a status code of 200 for a successful registration
+      if (response.status === 200) {
+        // Handle success, e.g., redirect or show a success message
+        console.log('User registered successfully');
+        router.push('/dashboard');
+      } else {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-  
-      // Handle success, e.g., redirect or show a success message
-      console.log('User registered successfully');
     } catch (error) {
       // Handle errors, e.g., show an error message to the user
-      console.error('Error registering user:');
+      console.error('Error registering user:', error);
     }
-    router.push('/dashboard')
-  }
+  };
 
   return (
     <div className="flex justify-center mt-8">
@@ -69,7 +55,7 @@ tracking-tight text-gray-900">
           </div>
 
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form className="space-y-6" action="#" method="POST">
+            <form className="space-y-6" action="#" method="POST" onSubmit={handleSubmit}>
             <div>
                 <label
                   htmlFor="firstname"
@@ -190,7 +176,6 @@ sm:text-sm sm:leading-6"
                 <button
                   type="submit"
                   className="button"
-                  onClick={handleSubmit}
                 >
                   Sign in
                 </button>
