@@ -25,6 +25,7 @@ export default function Signup() {
         password: password
       })
       if(response.status == 200) {
+        router.push('/dashboard');
         handleLogin();
       }
     } catch (error) {
@@ -46,6 +47,7 @@ export default function Signup() {
         withCredentials: true,
       }
     )
+    return response;
   }
 
   return (
@@ -194,7 +196,7 @@ sm:text-sm sm:leading-6"
             <p className="mt-10 text-center text-sm text-gray-500">
               Already have an account?{" "}
               <span
-                onClick={() => router.push('/')}
+                onClick={() => router.push('/register')}
                 className="font-semibold leading-6 text-indigo-600 
 hover:text-indigo-500 cursor-pointer"
               >

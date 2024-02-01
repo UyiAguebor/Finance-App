@@ -24,6 +24,7 @@ export default function LoginPage() {
       if (response.status === 200) {
         // Handle success, e.g., redirect or show a success message
         console.log('User logged in successfully');
+        router.push('/dashboard')
       } else {
         // Handle other status codes or error scenarios
         console.error('Login failed:', response.statusText);
