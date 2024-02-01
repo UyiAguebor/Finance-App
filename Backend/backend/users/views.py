@@ -19,10 +19,18 @@ def containsSpecialChar(s):
 def register(request):
     if request.method == "POST":
         json_data = json.loads(request.body.decode('utf-8'))
+
+        print(" ")
+        print(json_data)
+        print(" ")
         firstName = json_data.get("firstName")
         lastName = json_data.get("lastName")
         emailAddress = json_data.get("emailAddress")
         password = json_data.get("password")
+
+        print(" ")
+        print(password)
+        print(" ")
 
         users = db.users
         emailCheck = users.count_documents({"emailAddress": emailAddress})
@@ -85,6 +93,7 @@ def login(request):
 def testCookie(request):
     user_id = request.session.get('user_id', None)
     if user_id is not None:
+        print(user_id)
         return HttpResponse("Cookie is successful: " + user_id)
     else:
         return HttpResponse("Cookie not found")
