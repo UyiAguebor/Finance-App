@@ -13,31 +13,40 @@ export default function Signup() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const router = useRouter();
 
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const url = 'http://localhost:8000/users/register';
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    
     try {
-      const response = await axios.post(url, {
-        firstName,
-        lastName,
+      event.preventDefault();
+      const response = await axios.post('http://localhost:8000/users/register',
+      {
+        firstName: firstName,
+        lastName: lastName,
         emailAddress: email,
-        password,
-      });
-  
-      // Assuming your server returns a status code of 200 for a successful registration
-      if (response.status === 200) {
-        // Handle success, e.g., redirect or show a success message
-        console.log('User registered successfully');
-        router.push('/dashboard');
-      } else {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+        password: password
+      })
+      if(response.status == 200) {
+        handleLogin();
       }
     } catch (error) {
-      // Handle errors, e.g., show an error message to the user
-      console.error('Error registering user:', error);
+      if (error instanceof Error) {
+        console.log(error.message);
+      } else {
+        console.log("an error occured");
+      }
     }
   };
+
+  const handleLogin = async () => {
+    const response = await axios.post('http://localhost:8000/users/login',
+      {
+        emailAddress: email,
+        password: password
+      },
+      {
+        withCredentials: true,
+      }
+    )
+  }
 
   return (
     <div className="flex justify-center mt-8">
@@ -55,7 +64,7 @@ tracking-tight text-gray-900">
           </div>
 
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form className="space-y-6" action="#" method="POST" onSubmit={handleSubmit}>
+            <form className="space-y-6" action="#" onSubmit={handleSubmit}>
             <div>
                 <label
                   htmlFor="firstname"

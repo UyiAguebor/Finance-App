@@ -27,20 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["localhost"]
 CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_CREDENTIALS = False
-CORS_ALLOW_METHODS = [    
-'DELETE'
-,    
-'GET'
-,    
-'OPTIONS'
-,    
-'PATCH'
-,    
-'POST'
-,    
-'PUT'
-, ]
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_METHODS = ['DELETE',    'GET',
+                      'OPTIONS',    'PATCH',    'POST',    'PUT']
 
 # Application definition
 
@@ -91,6 +80,7 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 SESSION_COOKIE_NAME = 'USER_SESSION'
 SESSION_COOKIE_DOMAIN = None
 SESSION_COOKIE_PATH = '/'
+SESSION_SAVE_EVERY_REQUEST = True
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
