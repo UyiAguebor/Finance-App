@@ -1,5 +1,5 @@
 import json
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.hashers import make_password, check_password
 from db_connection import db
